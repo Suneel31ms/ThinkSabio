@@ -1,24 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Home from "./components/Home";
+
+import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
+import Donate from "./components/Donate";
+import StockList from "./components/footer-btn/StockList";
+import Option from "./components/footer-btn/Option";
+import Crypto from "./components/footer-btn/Crypto";
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <BrowserRouter>
+        <nav className="nav-bar">
+          <Link to="/">
+            <img src="images/tslogo-dark.png" alt="logo" className="logo" />
+          </Link>
+          <Link to="/donate" className="nav-btn">
+            Donate
+          </Link>
+          <i className="fas fa-bars"></i>
+        </nav>
+        <Switch>
+          <Route exact path={"/"} component={Home} />
+          <Route exact path={"/donate"} component={Donate} />
+          <Route exact path={"/stock"} component={StockList} />
+          <Route exact path={"/option"} component={Option} />
+          <Route exact path={"/crypto"} component={Crypto} />
+        </Switch>
+      </BrowserRouter>
+    </>
   );
 }
 
